@@ -1,0 +1,14 @@
+ul{
+    margin: 0px;
+    padding: 0px;
+    /* height: auto; */
+}
+
+li {
+  color: #0F0;
+}
+
+li p {
+  color: white;
+  border: solid #2c2b2b;
+}

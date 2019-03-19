@@ -1,0 +1,6 @@
+<div class="input-group">
+<input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" (keypress)="typing()" class="form-control width100">
+  <span class="input-group-btn">
+    <button class="btn btn-info" (click)="sendMessage()">Send</button>
+  </span>
+</div>

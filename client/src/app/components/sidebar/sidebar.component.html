@@ -1,0 +1,22 @@
+<br>
+<div class="Room">
+	<select name="roomInput" id="roomInput" class="form-control"  [(ngModel)]="room" (change)=selectRoom() style="color:black;">
+		<option value="Global" selected>Global</option>
+		<option value="Lobby">Lobby</option>
+		<option value="Hall">Hall</option>
+		<option value="Delux">Delux</option>
+	</select>
+	<div class="actionBtn">
+		<button class="btn btn-success" (click)="join()">Join</button>
+		<button class="btn btn-primary" (click)="leave()">Leave</button>
+	</div>
+</div>
+<br>
+<div class="userList">
+  <ul>
+    Online Users
+    <li class="users" *ngFor="let list of userlist">
+		<p (click)="privateMsg(list)">{{list}}</p>
+    </li>
+  </ul>
+</div>

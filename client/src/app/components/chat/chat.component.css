@@ -1,0 +1,72 @@
+.mainContent {
+  display: flex;
+  width: 100%;
+  height: 80%;
+}
+
+.userListWrapper {
+  background-color: rgba(22, 22, 22, 0.952);
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  padding: 0px 15px 0px 30px;
+  height: 100%;
+  border-right: 1px solid #222;
+  position: fixed;
+  overflow-x: hidden;
+  z-index:2;
+}
+
+.feedWrapper {
+  background:
+    linear-gradient(181deg, rgba(100, 200, 255, 0.6), rgba(0, 0, 0, 0.9)),
+    url('../../../assets/img/3.jpg') center center no-repeat;;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  flex: 5;
+  order: 2;
+  overflow-y: scroll;
+  padding: 0px 24px 0px 24px;
+  margin-left: 162px;
+  height:100%;
+}
+
+.chatFormWrapper {
+  height: 50px;
+  background-color: #eee;
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+}
+
+::-webkit-scrollbar {
+  min-width: 12px;
+  width: 12px;
+  max-width: 12px;
+  min-height: 12px;
+  height: 12px;
+  max-height: 12px;
+  background: #252C33;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 100px;
+  border: solid 3px #252C33;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+app-chat-form{
+  position: fixed;
+  width: 100%;
+  bottom: 0%;
+  padding-left: 152px;
+}

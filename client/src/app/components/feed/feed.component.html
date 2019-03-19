@@ -1,0 +1,26 @@
+<div class="feed">
+<!-- -----------------------------RoomMsg------------------------------- -->
+  <div class="roomMsgCnt" *ngFor="let roomMessage of roomMessages">
+    {{roomMessage.roomMsg}}
+  </div>
+<!---------------------------------Msg-------------------------------------- -->  
+  <div #messages class="messageCnt" *ngFor="let message of messages">
+    <div class="user" *ngIf="message.user==user; else user2">
+      {{message.user}} :
+    </div>
+    <ng-template #user2>
+      <div class="user2">
+        {{message.user}} :
+      </div>
+    </ng-template>
+    <div class="msg">
+      {{message.msg}}
+    </div>
+    <div class="time">
+      {{message.time}}
+    </div>
+  </div>
+  <div class="typing" style="color:white;" *ngIf="typingMsg!=null">
+    {{typingMsg}}
+  </div>
+</div>

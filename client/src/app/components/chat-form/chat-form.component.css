@@ -1,0 +1,45 @@
+.chatInput:focus{
+    background-color: #E4F1FE;
+    color: #222;
+    transition: 0.2s ease-in;
+}
+
+.btn-info{
+    padding: 14px 20px;
+    /* margin: 0px 0px -26px 0px; */
+    font-family: 'Droid Sans', sans-serif;
+    background-color: #2A2845;
+    color: white;
+    transition: 0.2s ease-out;
+    min-width: 50px;
+    float: right;
+}
+.emoji {
+    font-family: 'Droid Sans',
+    sans-serif;
+    background-color: #2A2845;
+    color: white;
+    transition: 0.2s ease-out;
+    min-width: 50px;
+    float: right;
+}
+
+button:hover{
+    background-color: #444;
+}
+
+.form-control{
+    height : 50px;
+}
+
+.red {
+  background-color: red !important;
+}
+
+.blue {
+  background-color: blue !important;
+}
+
+.blue .search-header {
+  background-color: green !important;
+}

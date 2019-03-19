@@ -1,0 +1,58 @@
+.feed {
+  /*display: flex;*/
+  flex-direction: column;
+  color: #000;
+}
+
+.messageCnt {
+  padding-bottom: 24px;
+  margin: 5px 0px 0px -2px;
+  height: auto;
+  width: 100%;
+  /* align-items: stretch; */
+  background-color: #acf5ff8a;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.26), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.roomMsgCnt {
+  padding: 6px;
+  display: flex;
+  margin: 5px;
+  height: auto;
+  width: auto;
+  align-items: stretch;
+  background-color: #ffffff8a;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.26), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.message {
+  flex-direction: column;
+  margin: 10px 0;
+}
+hr{
+  margin: 0px;
+  padding: 0px;
+}
+
+.user{
+  padding-left: 8px;
+  background-color:#005de6ba;
+}
+
+.user2{
+  padding-left: 8px;
+  background-color:#00e658ba;
+}
+
+.msg {
+  padding-top: 8px;
+  padding-left: 8px;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  margin: 0;
+}
+
+.time {
+  float: right;
+  background-color: #ffffff8a;
+}

@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+
+<div class="mainContent">
+  <div class="userListWrapper">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="feedWrapper" #scroller [scrollTop]="scroller.scrollHeight">
+    <app-feed></app-feed>
+  </div>
+</div>
+
+<div class="chatFormWrapper">
+  <app-chat-form></app-chat-form>
+</div>

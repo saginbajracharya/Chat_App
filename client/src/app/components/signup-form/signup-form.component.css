@@ -1,0 +1,69 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 103, 0, 0.3), rgba(0, 0, 80, 0.9)),
+    url('../../../assets/img/3.jpg') center center no-repeat;
+  ;
+  background-attachment: fixed;
+}
+
+.signUpCard {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: whitesmoke;
+  margin: auto;
+  text-align: center;
+  padding: 150px 30px;
+}
+
+.formInput {
+  color: black;
+  margin: auto;
+  margin-top: 16px;
+  display: block;
+  height: 40px;
+  border-radius: 4px;
+  background: #ecf0f1;
+  border: #ccc 1px solid;
+  padding: 8px;
+  font-size: 1.2em;
+}
+
+#btn-signUp {
+  background-color: #000000;
+}
+
+#btn-signUp:hover {
+  background-color: rgb(6, 1, 78);
+  transition: ease-in 0.2s;
+}
+
+#btn-login {
+  background-color: #000000;
+}
+
+#btn-login:hover {
+  background-color: rgb(6, 1, 78);
+  transition: ease-in 0.2s;
+}
+.is-invalid {
+  border: 2px solid red;
+}
+
+.alert-success {
+  color: #6fff72;
+  height: 2px;
+  padding: 0px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.alert-danger {
+  font-size: 16px;
+  color: red;
+  height: 2px;
+  padding: 0px;
+  background-color: transparent;
+  border-color: transparent;
+}

@@ -31,8 +31,9 @@ app.use(cors());
 
 /* API ROUTE FOR LOGIN*/
 app.post('/login', function (req, res, next) {
-    sql_where = "username = " + "'" + req.body.username + "'";
+    sql_where = "username = " + "'" + req.body.username + "'" + " AND " + " password = " + "'" + req.body.password + "'";
     var qry = "SELECT username, password, access_token FROM app_user where " + sql_where;
+    console.log(qry);
     if (typeof req.body.username != 'undefined') {
         pgPool.runQuery(qry, function (err, result) {
             var resp = {
@@ -46,16 +47,16 @@ app.post('/login', function (req, res, next) {
             else{//query not error
                 console.log(result.rows[0].password);
                 if (result.rowCount != 0){//has result.rowCount
-                    const hashedPassword = bcrypt.compare(req.body.password, result.rows[0].password);
-                    console.log(hashedPassword);
-                    console.log('passBcrypt');
-                    if(hashedPassword == true){
-                        console.log('passBcrypt');
+                    // const hashedPassword = bcrypt.compare(req.body.password, result.rows[0].password);
+                    // console.log(hashedPassword);
+                    // console.log('passBcrypt');
+                    // if(hashedPassword == true){
+                        // console.log('passBcrypt');
                         resp['msg'] = "User Found.";
                         resp['data'] = result.rowCount == 0 ? {} : result.rows;
                         resp['success'] = true;
                         res.status(200).json(resp);
-                    }
+                    // }
                 } else { //has no result.rowCount
                     resp['msg'] = "Could not find User with given UserName and Password.";
                     resp['success'] = false;
@@ -69,8 +70,8 @@ app.post('/login', function (req, res, next) {
 
 /* API ROUTE FOR SIGNUP*/
 app.post('/signup', function (req, res, next) {
-    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-        console.log(hash);
+    // bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+        // console.log(hash);
         var token = jwt.sign({
                 username: req.body.username
             }, 'helloWorld', {
@@ -100,7 +101,7 @@ app.post('/signup', function (req, res, next) {
                 res.end();
             });
         }
-    });
+    // });
 });
 
 //update user status on login for now is_locked

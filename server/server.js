@@ -31,47 +31,43 @@ app.use(cors());
 
 /* API ROUTE FOR LOGIN*/
 app.post('/login', function (req, res, next) {
-    sql_where = "username = " + "'" + req.body.username + "'" + " AND " + " password = " + "'" + req.body.password + "'";
-    var qry = "SELECT username, password, access_token FROM app_user where " + sql_where;
-    console.log(qry);
-    if (typeof req.body.username != 'undefined') {
-        pgPool.runQuery(qry, function (err, result) {
-            var resp = {
-                "success": false,
-            };
-            if (err){//query error
-                resp['error'] = err;
-                resp['msg'] = "Invalid SQL Syntax";
-                res.status(500).json(resp);
-            }
-            else{//query not error
+    if (typeof req.body.username != 'undefined') //if not empty username 
+    {
+        var sql_where = "username = " + "'" + req.body.username + "'" /*+ " AND " + " password = " + "'" + req.body.password + "'"*/,
+            qry = "SELECT username, password, access_token FROM app_user where " + sql_where,
+            resp = { "success": false };
+        pgPool.runQuery(qry, function (err, result){
+            if (result.rowCount!=0){
                 console.log(result.rows[0].password);
-                if (result.rowCount != 0){//has result.rowCount
-                    // const hashedPassword = bcrypt.compare(req.body.password, result.rows[0].password);
-                    // console.log(hashedPassword);
-                    // console.log('passBcrypt');
-                    // if(hashedPassword == true){
-                        // console.log('passBcrypt');
-                        resp['msg'] = "User Found.";
-                        resp['data'] = result.rowCount == 0 ? {} : result.rows;
+                bcrypt.compare(req.body.password, result.rows[0].password, function(err, bres){
+                    if(bres == true){
+                        console.log('Success');
+                        resp['msg']     = "User Found.";
+                        resp['data']    = result.rowCount == 0 ? {} : result.rows;
                         resp['success'] = true;
                         res.status(200).json(resp);
-                    // }
-                } else { //has no result.rowCount
-                    resp['msg'] = "Could not find User with given UserName and Password.";
-                    resp['success'] = false;
-                    res.status(200).json(resp);
-                }
+                    }
+                    else{
+                        console.log('Got error');
+                        resp['msg']     = "Could not find User with given UserName and Password.";
+                        resp['success'] = false;
+                        res.status(200).json(resp);
+                    }
+                });
             }
-            res.end();
+            else{
+                resp['error'] = err;
+                resp['msg']   = "Invalid SQL Syntax";
+                res.status(500).json(resp);
+            }
         });
     }
 });
 
 /* API ROUTE FOR SIGNUP*/
 app.post('/signup', function (req, res, next) {
-    // bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-        // console.log(hash);
+    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+        console.log(hash);
         var token = jwt.sign({
                 username: req.body.username
             }, 'helloWorld', {
@@ -101,7 +97,7 @@ app.post('/signup', function (req, res, next) {
                 res.end();
             });
         }
-    // });
+    });
 });
 
 //update user status on login for now is_locked
